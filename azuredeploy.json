@@ -19,8 +19,23 @@
     },
     "sku": {
       "type": "string",
-      "defaultValue": "F1",
-      "metadata": {
+      "defaultValue": "D1",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S1",
+        "S1",
+        "P1v2",
+        "P2v2",
+        "P3v2",
+        "P1v3",
+        "P2v3",
+        "P3v3"
+      ],      "metadata": {
         "description": "The SKU of App Service Plan."
       }
     },
@@ -84,7 +99,7 @@
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2021-02-01",
       "name": "[variables('appServicePlanPortalName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -93,7 +108,7 @@
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2021-02-01",
       "name": "[parameters('webAppName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -107,7 +122,7 @@
         {
           "condition": "[contains(variables('gitRepoUrl'),'http')]",
           "type": "sourcecontrols",
-          "apiVersion": "2020-06-01",
+          "apiVersion": "2021-02-01",
           "name": "web",
           "location": "[parameters('location')]",
           "dependsOn": [
