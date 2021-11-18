@@ -159,7 +159,7 @@
         "name": "[concat(toLower(parameters('parentDnsZoneName')), '/', toLower(parameters('webAppName')) )]",
         "location": "global",
         "dependsOn": [
-          "[resourceId('Microsoft.Web/serverfarms', variables('webAppPortalName'))]"
+          "[resourceId('Microsoft.Web/sites', variables('webAppPortalName'))]"
         ],
         "properties": {
             "TTL": 3600,
