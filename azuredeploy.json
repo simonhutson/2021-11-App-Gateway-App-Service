@@ -19,6 +19,13 @@
         "description": "Web app name."
       }
     },
+    "parentDnsZoneName": {
+      "type": "string",
+      "defaultValue": "srhdemo.co.uk",
+      "metadata": {
+        "description": "Parent DNS zone name."
+      }
+    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
