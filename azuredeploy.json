@@ -13,7 +13,7 @@
     },
     "webAppName": {
       "type": "string",
-      "defaultValue": "WEBAPP-1",
+      "defaultValue": "APP-1",
       "minLength": 2,
       "metadata": {
         "description": "Web app name."
