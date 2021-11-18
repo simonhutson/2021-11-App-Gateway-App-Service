@@ -19,7 +19,7 @@
     },
     "sku": {
       "type": "string",
-      "defaultValue": "D1",
+      "defaultValue": "B1",
       "allowedValues": [
         "F1",
         "D1",
