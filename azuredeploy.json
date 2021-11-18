@@ -2,9 +2,18 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "prefix": {
+      "type": "string",
+      "defaultValue": "SRH",
+      "minLength": 3,
+      "maxLength": 3,
+      "metadata": {
+        "description": "3 character prefix for all resources."
+      }
+    },
     "webAppName": {
       "type": "string",
-      "defaultValue": "[concat('webApp-', uniqueString(resourceGroup().id))]",
+      "defaultValue": "WEBAPP-1",
       "minLength": 2,
       "metadata": {
         "description": "Web app name."
@@ -68,7 +77,8 @@
     }
   },
   "variables": {
-    "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('webAppName'))]",
+    "appServicePlanPortalName": "[concat(toUpper(parameters('prefix')), '-APPSERVICEPLAN-', toUpper(parameters('webAppName')))]",
+    "webAppPortalName": "[concat(toUpper(parameters('prefix')), '-WEBAPP-', toUpper(parameters('webAppName')))]",
     "gitRepoReference": {
       ".net": "https://github.com/Azure-Samples/app-service-web-dotnet-get-started",
       "node": "https://github.com/Azure-Samples/nodejs-docs-hello-world",
@@ -109,7 +119,7 @@
     {
       "type": "Microsoft.Web/sites",
       "apiVersion": "2021-02-01",
-      "name": "[parameters('webAppName')]",
+      "name": "[variables('webAppPortalName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
