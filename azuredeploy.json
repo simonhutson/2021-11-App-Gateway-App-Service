@@ -136,7 +136,7 @@
           "name": "web",
           "location": "[parameters('location')]",
           "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+            "[resourceId('Microsoft.Web/sites', variables('webAppPortalName'))]"
           ],
           "properties": {
             "repoUrl": "[variables('gitRepoUrl')]",
